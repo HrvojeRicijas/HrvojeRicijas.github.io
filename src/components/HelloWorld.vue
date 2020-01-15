@@ -5,25 +5,25 @@
     </div>
     <div class="store">
 
-      <div class="flavors">
+      <div class="materials">
         <div style="display:inline-flex">
           <div style="padding:1rem">
-            <div v-for="(stat , flavor) in flavors" :key="flavor" style="display:block">
-              <span class="clickable" v-on:click=" (parts['flavor'] = flavor); buildIcecream(); parts['mw'] = flavors[parts['flavor']]['mw'][0]" >{{flavor.replace("_", " ")}}</span>
+            <div v-for="(stat , material) in materials" :key="material" style="display:block">
+              <span class="clickable" v-on:click=" (parts['material'] = material); buildIcecream(); parts['mw'] = materials[parts['material']]['mw'][0]" >{{material.replace("_", " ")}}</span>
             </div>
           </div>
 
-          <div v-if="parts['flavor']" style=" background-color:rgb(245, 187, 187); padding:1rem;">
-            <div style="display:block" v-for="mw in flavors[parts['flavor']]['mw']" :key="mw">
+          <div v-if="parts['material']" style=" background-color:rgb(245, 187, 187); padding:1rem;">
+            <div style="display:block" v-for="mw in materials[parts['material']]['mw']" :key="mw">
               <span class="clickable" v-on:click="parts['mw'] = mw; buildIcecream()"> Mw {{mw}}</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="toppings">
-        <div v-for="(stat , topping) in toppings" :key="topping">
-          <span class="clickable" v-on:click=" (parts['topping'] = topping); buildIcecream()">{{topping.replace("_", " ")}}</span>
+      <div class="weapons">
+        <div v-for="(stat , weapon) in weapons" :key="weapon">
+          <span class="clickable" v-on:click=" (parts['weapon'] = weapon); buildIcecream()">{{weapon.replace("_", " ")}}</span>
         </div>
       </div>
 
@@ -62,88 +62,88 @@ export default {
       icecream: "You have nothing",
 
       parts: {
-        flavor: "",
+        material: "",
         mw: 1,
-        topping: "",
+        weapon: "",
         container: "",
       },
 
-      flavors: {
-        Chocolate: {
+      materials: {
+        Iron: {
           cost: 1,
-          taste: 5,
+          hardness: 5,
           mw: [1, 2, 3],
           hp: 3,
           special: ""
         },
-        Vanilla: {
+        Copper: {
           cost: 1,
-          taste: 4,
+          hardness: 4,
           mw: [1, 2, 3],
           hp: 3,
           special: "Doesn't rust"
         },
-        Strawberry: {
+        Steel: {
           cost: 3,
-          taste: 7,
+          hardness: 7,
           mw: [2, 3, 4],
           hp: 3,
           special: ""
         },
-        Lemon: {
+        Silver: {
           cost: 5,
-          taste: 4,
+          hardness: 4,
           mw: [2, 3, 4],
           hp: 3,
           special: ""
         },
-        Cherry: {
+        Tempered_glass: {
           cost: 5,
-          taste: 8,
+          hardness: 8,
           mw: [2, 3, 4],
           hp: 2,
           special: "Additional slashing damage"
         },
-        White_chocolate: {
+        White_steel: {
           cost: 8,
-          taste: 9,
+          hardness: 9,
           mw: [3, 4, 5],
           hp: 3,
           special: "Weighs less"
         },
-        Black_chocolate: {
+        Black_steel: {
           cost: 8,
-          taste: 9,
+          hardness: 9,
           mw: [3, 4, 5],
           hp: 3,
           special: "Heavier and more damaging"
         },
       },
 
-      toppings: {
-        Sprinkles: {
+      weapons: {
+        Small: {
           cost: 2,
-          taste: 6,
+          damage: 6,
           type: "sl",
         },
-        Cookie_crumbs: {
+        Medium: {
           cost: 2.5,
-          taste: 8,
+          damage: 8,
           type: "sl",
         },
-        Caramel: {
+        Large: {
           cost: 3,
-          taste: 10,
+          damage: 10,
           type: "sl",
         },
-        Cheese: {
+        Two_handed: {
           cost: 3.5,
-          taste: 12,
+          damage: 12,
           type: "sl",
         },
-        Skittles: {
+        Special: {
           cost: 4,
-          taste: 6+6+6,
+          damage: 6+6+6,
           type: "sl",
         },
       },
@@ -170,36 +170,32 @@ export default {
   },
   methods:{
     buildIcecream: function () {
-      var out = "You have ";
-      var fl = this.parts["flavor"].replace('_', ' ').toLowerCase();
-      var tp = this.parts["topping"].replace('_', ' ').toLowerCase();
-      var cn = this.parts["container"].replace('_', ' ').toLowerCase();
-      if (fl){out = out + "a lovely scoop of " + fl + " ice cream"}
-      if (tp){out = out + (fl ? ", covered with " : "") + tp}
-      if (cn){out = out + (tp+fl ? ", in " : " ") + "a nice " + cn} else if (fl || tp) {out = out + ", melting in your hands"}
+      var out = "";
+      var material = this.parts["material"].replace('_', ' ').toLowerCase();
+      var weapon = this.parts["weapon"].replace('_', ' ').toLowerCase();
+      // var cn = this.parts["container"].replace('_', ' ').toLowerCase( );
+      var mw = this.parts["mw"];
+      if (material){out = out + "Masterwork " + mw + " " + material + " " + weapon + " weapon"}
+    
       this.icecream = out;
     },
   },
   computed:{
     price: function(){
-      if ((this.parts['flavor']+this.parts['topping']+this.parts['container'])){
+      if ((this.parts['material']+this.parts['weapon']+this.parts['container'])){
         return 1 *
-        (this.parts['flavor'] ? this.flavors[this.parts["flavor"]]["cost"] : 1) *
+        (this.parts['material'] ? this.materials[this.parts["material"]]["cost"] : 1) *
         (this.parts['mw'] ? 2**(this.parts['mw']-1) : 1) *
-        (this.parts['topping'] ? this.toppings[this.parts["topping"]]["cost"] : 1) *
+        (this.parts['weapon'] ? this.weapons[this.parts["weapon"]]["cost"] : 1) *
         (this.parts['container'] ? this.containers[this.parts["container"]]["cost"] : 1);
       }
       return 0;
     },
     taste: function(){
-      if (this.parts['topping']=="Cheese" && this.parts['flavor'] == ""){
-        if (this.parts['container'] == "Paper_cup") {return 9}
-        if (this.parts['container'] == "Glass_bowl") {return 10}
-      }
-      if ((this.parts['flavor']+this.parts['topping']+this.parts['container'])){
+      if ((this.parts['material']+this.parts['weapon']+this.parts['container'])){
         return 1 *
-        (this.parts['flavor'] ? this.flavors[this.parts["flavor"]]["taste"] : 1) *
-        (this.parts['topping'] ? this.toppings[this.parts["topping"]]["taste"] : 1) *
+        (this.parts['material'] ? this.materials[this.parts["material"]]["hardness"] : 1) *
+        (this.parts['weapon'] ? this.weapons[this.parts["weapon"]]["damage"] : 1) *
         (this.parts['container'] ? this.containers[this.parts["container"]]["taste"] : 1);
       }
       return 0;
@@ -246,7 +242,7 @@ li {
   /* background-color:rgb(187, 110, 10); */
 
 }
-.flavors{
+.materials{
   display:inline-block;
   margin: 1rem;
   text-align: left;
@@ -254,7 +250,7 @@ li {
   /* padding: 1rem; */
   min-width: 7rem;
 }
-.toppings{
+.weapons{
   display: inline-block;
   margin: 1rem;
   text-align: center;

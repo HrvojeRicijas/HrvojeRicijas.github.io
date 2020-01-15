@@ -16,7 +16,7 @@ export default {
     data: function (){
         return {
             guess: "",
-            solution: "This is the test solution",
+            solution: "Dorotea je najzgodnija cura na svijetu",
         }
     },
 

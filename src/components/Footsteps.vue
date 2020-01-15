@@ -1,12 +1,12 @@
 <template>
-  <div class="field">
+  <div class="footsteps">
 
   </div>
 </template>
 
 <script>
 export default {
-    name: 'Field',
+    name: 'Footsteps',
 
     props:{
 
@@ -31,15 +31,15 @@ export default {
 
 <style>
 
-.field{
-    background-image: url('../assets/stone_tile.jpg');
-    background-size: 100%;
-    height: 3rem;
-    width: 3rem;
+.character{
+    background-image: url('../assets/footsteps.jpg');
+    background-size: cover;
+    height: 3.2rem;
+    width: 3.2rem;
     border-style: dashed;
     border-color: white;
-    border-width: 0.1rem;
-    margin: 0;
+    border-width: 0rem;
+    margin-left: -3.2rem;;
 }
 
 </style>

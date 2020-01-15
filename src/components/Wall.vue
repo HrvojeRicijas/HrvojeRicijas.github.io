@@ -1,12 +1,12 @@
 <template>
-  <div class="field">
+  <div class="wall">
 
   </div>
 </template>
 
 <script>
 export default {
-    name: 'Field',
+    name: 'Wall',
 
     props:{
 
@@ -31,14 +31,14 @@ export default {
 
 <style>
 
-.field{
-    background-image: url('../assets/stone_tile.jpg');
+.wall{
+    background-image: url('../assets/wall.jpg');
     background-size: 100%;
-    height: 3rem;
-    width: 3rem;
+    height: 3.2rem;
+    width: 3.2rem;
     border-style: dashed;
     border-color: white;
-    border-width: 0.1rem;
+    border-width: 0rem;
     margin: 0;
 }
 

@@ -1,26 +1,27 @@
 <template>
   <div id="app">
-    <!-- <HelloWorld msg=""/> -->
+    <HelloWorld msg=""/>
     <Guess></Guess>
-    <!-- <Follow></Follow> -->
+    <Follow></Follow>
     <Board></Board>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue'
 import Guess from './components/Guess.vue'
-//import Follow from './components/Follow.vue'
+import Follow from './components/Follow.vue'
 import Board from './components/Board.vue'
+
 
 export default {
   name: 'app',
   components: {
-    // HelloWorld,
+    HelloWorld,
     Guess,
-    //Follow,
-    Board
-  }
+    Follow,
+    Board,
+  } 
 }
 </script>
 

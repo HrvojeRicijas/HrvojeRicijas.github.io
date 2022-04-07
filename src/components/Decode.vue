@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <span>Please enter the code in the right order ignoring all letters:    </span>
+            <span>Please enter the code in the right order:    </span>
             <input class="input" type="text" v-model="guess">
         </div>
         <div class="output">
@@ -18,13 +18,13 @@
                 (djeca nisu u grobu)
                 </span>
             <img  v-if="showImage" src="slikica.jpg" height="900px">
-            <span v-if="showWordlish"> 
-                <Guess solve="fish"></Guess>
-                <Guess solve="cross"></Guess>
-                <Guess solve="faith"></Guess>
-                <Guess solve="plaque"></Guess>
-                <Guess solve="inscription"></Guess>
-                <Guess solve="code"></Guess>
+            <span v-if="showWordlish" > 
+                <Guess solve="fish" style="float:center; padding:25px"></Guess>
+                <Guess solve="cross" style="float:center; padding:25px"></Guess>
+                <Guess solve="faith" style="float:center; padding:25px"></Guess>
+                <Guess solve="plaque" style="float:center; padding:25px"></Guess>
+                <Guess solve="inscription" style="float:center; padding:25px"></Guess>
+                <Guess solve="code" style="float:center; padding:25px"></Guess>
             </span>
         </div>
     </div>

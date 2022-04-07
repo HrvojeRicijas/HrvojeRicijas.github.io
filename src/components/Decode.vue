@@ -16,15 +16,31 @@
                 Odlucio je cak i u smrti cuvati djecu obliznje skole.
                 Sada, i dan danas, u svojem grobu, on pazi na cesti prema stanici, čuva djecu i svoju tajnu.
                 (djeca nisu u grobu)
-                </span>
+            </span>
+            <span v-if="showPoem"> 
+                Eight tall twins of steel and stone <br>
+                The earthquake almost made them prone. <br>
+                All of them sit near a fast pool <br>
+                Two of them look at a school. <br>
+                All of this is really true <br>
+                But just the oldest hides a clue. <br>
+                Look for it in it's buttcrack <br>
+                A better description i do lack. <br>
+                Worry not for sanitation <br>
+                You will find a fresh sensation <br>
+                (Iako pazimo na staklo)
+            </span>
             <img  v-if="showImage" src="slikica.jpg" height="900px">
-            <span v-if="showWordlish" > 
-                <Guess solve="fish" style="float:center; padding:25px"></Guess>
-                <Guess solve="cross" style="float:center; padding:25px"></Guess>
-                <Guess solve="faith" style="float:center; padding:25px"></Guess>
-                <Guess solve="plaque" style="float:center; padding:25px"></Guess>
-                <Guess solve="inscription" style="float:center; padding:25px"></Guess>
-                <Guess solve="code" style="float:center; padding:25px"></Guess>
+            <span v-if="showWordlish" >
+                <br>
+                budes valjda skuzila kak ovo ide :P <br> 
+                <Guess solve="fish" class="wordl"></Guess>
+                <Guess solve="cross" class="wordl"></Guess>
+                <Guess solve="faith" class="wordl"></Guess>
+                <Guess solve="plaque" class="wordl"></Guess>
+                <Guess solve="inscription" class="wordl"></Guess>
+                <Guess solve="code" class="wordl"></Guess>
+                <Guess solve="volim te" class="wordl"></Guess>
             </span>
         </div>
     </div>
@@ -93,6 +109,13 @@ export default {
                return 1;
             }
             return 0;
+        },
+
+        showPoem: function (){
+            if (this.guess == this.solution4){
+               return 1;
+            }
+            return 0;
         }
 
 
@@ -112,6 +135,11 @@ export default {
     font-size: 1rem;
     border-radius: 1rem;
     padding: 0.25rem
+}
+
+.wordl{
+    display: inline-block;
+    padding: 10px;
 }
 
 </style>

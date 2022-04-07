@@ -12,16 +12,22 @@
 <script>
 export default {
     name: 'Guess',
-    props: {},
+    props: {solve: String},
     data: function (){
         return {
             guess: "",
-            solution: "Dorotea je najzgodnija cura na svijetu",
+            solution: this.solve,
         }
     },
 
     methods:{
         letterColor: function(key){
+            if (key >= this.solution.length) {
+                return {
+                color: "#ff0dad",
+                fontSize: "1rem",
+            };
+            }
             if (this.guess.toLowerCase() == this.solution.toLowerCase()) {
                 return {
                     color: "#0000e6",
@@ -31,6 +37,13 @@ export default {
             if (this.guess[key].toLowerCase() == this.solution[key].toLowerCase()) {
                 return {
                     color: "#39e600",
+                    fontSize: "1rem",
+                }
+            } 
+            if (this.solution.toLowerCase().includes(this.guess[key].toLowerCase())) {
+                
+                return {
+                    color: "#ebdb34",
                     fontSize: "1rem",
                 }
             }

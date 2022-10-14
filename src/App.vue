@@ -2,30 +2,30 @@
   <div id="app">
 
   
-    <!-- <HelloWorld msg=""/> -->
+    <HelloWorld msg=""/>
     <Code></Code>
     
-    <!-- <Follow></Follow> -->
-    <!-- <Board></Board> -->
+    <Follow></Follow>
+    <Board></Board>
   </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue'
 
 import Code from './components/Decode.vue'
-//import Follow from './components/Follow.vue'
-//import Board from './components/Board.vue'
+import Follow from './components/Follow.vue'
+import Board from './components/Board.vue'
 
 
 export default {
   name: 'app',
   components: {
-    // HelloWorld,
+    HelloWorld,
     Code,
 
-    // Follow,
-    // Board,
+    Follow,
+    Board,
   } 
 }
 </script>
